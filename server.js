@@ -43,7 +43,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage,
-  limits: { fileSize: 5 * 1024 * 1024 },
+  limits: { fileSize: 500 * 1024 },
   fileFilter: (_req, file, cb) => {
     if (/^image\/(jpeg|png|webp)$/.test(file.mimetype)) cb(null, true);
     else cb(new Error("Only JPG, PNG or WEBP images are allowed"));
@@ -62,7 +62,9 @@ app.use(
     cookie: {
       httpOnly: true,
       sameSite: "lax",
-      secure: process.env.NODE_ENV === "production",
+      secure:
+        process.env.COOKIE_SECURE === "true" ||
+        (process.env.NODE_ENV === "production" && process.env.COOKIE_SECURE !== "false"),
       maxAge: 8 * 60 * 60 * 1000,
     },
   })
