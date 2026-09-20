@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registration Status · SPL 2026</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="/">
+        <div class="badge">SPL<br />2026</div>
+        <div><strong>Registration Status</strong><div class="muted">Mobile number se check karein</div></div>
+      </a>
+      <nav class="nav">
+        <a class="btn btn-outline" href="/register">Register</a>
+        <a class="btn btn-gold" href="/">Home</a>
+      </nav>
+    </header>
+
+    <form id="lookup" class="panel">
+      <label>Mobile number</label>
+      <div class="row">
+        <input id="mobile" name="mobile" inputmode="numeric" maxlength="10" required />
+        <button class="btn btn-gold" type="submit">Check status</button>
+      </div>
+    </form>
+    <div id="flash" class="flash hidden"></div>
+    <div id="results" class="grid" style="margin-top:16px"></div>
+    <footer></footer>
+  </div>
+  <script src="/status.js"></script>
+</body>
+</html>

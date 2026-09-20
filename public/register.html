@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Player Registration · SPL 2026</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="/">
+        <div class="badge">SPL<br />2026</div>
+        <div><strong>Player Registration Form</strong><div class="muted">Tennis Ball Tournament 2026</div></div>
+      </a>
+      <nav class="nav">
+        <a class="btn btn-outline" href="/status">Status</a>
+        <a class="btn btn-gold" href="/">Home</a>
+      </nav>
+    </header>
+
+    <div class="warn">नगर निगम या नगर पंचायत के खिलाड़ियों का रजिस्ट्रेशन फॉर्म न भरें।</div>
+    <p class="muted">Registration ID office confirm ke baad milega. Fee ₹<span id="fee">300</span>. Payment: <strong id="payNum">8709506180</strong></p>
+    <div id="flash" class="flash hidden"></div>
+
+    <form id="regForm" class="panel" enctype="multipart/form-data">
+      <h2 style="color:var(--gold);margin-top:0">Personal details</h2>
+      <label>Full Name of Player *</label>
+      <input name="full_name" required maxlength="80" />
+      <div class="row">
+        <div>
+          <label>Date of Birth *</label>
+          <input type="date" name="dob" id="dob" required min="1946-01-01" max="2018-12-31" />
+        </div>
+        <div>
+          <label>Age (auto)</label>
+          <input id="age" readonly />
+        </div>
+      </div>
+      <label>Address *</label>
+      <textarea name="address" required></textarea>
+      <div class="row">
+        <div>
+          <label>District *</label>
+          <input name="district" required />
+        </div>
+        <div>
+          <label>Block *</label>
+          <input name="block" required />
+        </div>
+      </div>
+      <label>Village / Town *</label>
+      <input name="village_town" required />
+      <div class="row">
+        <div>
+          <label>Mobile No. *</label>
+          <input name="mobile" required inputmode="numeric" maxlength="10" pattern="\d{10}" />
+        </div>
+        <div>
+          <label>Alternate No.</label>
+          <input name="alternate_no" inputmode="numeric" maxlength="10" />
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>Email ID (optional)</label>
+          <input type="email" name="email" />
+        </div>
+        <div>
+          <label>Aadhaar No. *</label>
+          <input name="aadhaar" required inputmode="numeric" maxlength="12" pattern="\d{12}" />
+        </div>
+      </div>
+      <label>Passport size photo *</label>
+      <input type="file" name="photo" accept="image/jpeg,image/png,image/webp" required />
+
+      <h2 style="color:var(--gold)">Sports details</h2>
+      <label>Main Sport *</label>
+      <div class="checks">
+        <label><input type="radio" name="main_sport" value="Cricket" required /> Cricket</label>
+        <label><input type="radio" name="main_sport" value="Tennis Ball Cricket" /> Tennis Ball Cricket</label>
+      </div>
+      <label>Playing Role *</label>
+      <div class="checks">
+        <label><input type="radio" name="playing_role" value="Batsman" required /> Batsman</label>
+        <label><input type="radio" name="playing_role" value="Bowler" /> Bowler</label>
+        <label><input type="radio" name="playing_role" value="All Rounder" /> All Rounder</label>
+        <label><input type="radio" name="playing_role" value="Wicket Keeper" /> Wicket Keeper</label>
+        <label><input type="radio" name="playing_role" value="Others" /> Others</label>
+      </div>
+      <label>Local Club / Team Name (if any)</label>
+      <input name="club_name" />
+
+      <h2 style="color:var(--gold)">Payment ₹<span class="fee2">300</span></h2>
+      <p class="muted">GPay / PhonePe se Scan &amp; Pay karke UTR aur screenshot yahan daalein. Admin manually confirm karega.</p>
+      <div class="pay-qr-panel">
+        <div class="qr-wrap">
+          <img id="payQr" src="/api/payment-qr" alt="SPL payment QR — Scan &amp; Pay ₹300" />
+          <small>SCAN &amp; PAY ₹300</small>
+        </div>
+        <div>
+          <div>Payment number: <strong id="payNum2">8709506180</strong></div>
+          <div class="muted">UPI: <span id="upiId">8709506180@ybl</span></div>
+          <div class="muted">GPay · PhonePe</div>
+        </div>
+      </div>
+      <label>UTR / UPI Transaction ID *</label>
+      <input name="utr" required minlength="8" maxlength="30" />
+      <label>Payment screenshot *</label>
+      <input type="file" name="payment_screenshot" accept="image/jpeg,image/png,image/webp" required />
+
+      <h2 style="color:var(--gold)">Declaration</h2>
+      <p>मैं यह घोषणा करता/करती हूँ कि ऊपर दी गई जानकारी मेरे ज्ञान के अनुसार सही है। मैं SPL 2026 के सभी नियमों और शर्तों का पालन करने के लिए सहमत हूँ। आयोजक के निर्णय को मैं अंतिम मानूँगा।</p>
+      <label class="checks"><input type="checkbox" name="declaration" value="true" required /> Main sehmat hoon *</label>
+      <label>Signature — apna naam type karein (Player / Parent / Guardian) *</label>
+      <input name="signature_name" required maxlength="80" />
+
+      <p style="margin-top:20px">
+        <button class="btn btn-gold" type="submit" id="submitBtn">Submit registration</button>
+      </p>
+    </form>
+    <footer>Office use: Registration ID confirm ke baad generate hogi · Date auto</footer>
+  </div>
+  <script src="/register.js"></script>
+</body>
+</html>

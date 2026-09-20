@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin · SPL 2026</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="/">
+        <div class="badge">ADM</div>
+        <div><strong>SPL Admin</strong><div class="muted">UTR manually confirm karein</div></div>
+      </a>
+      <nav class="nav">
+        <button id="logoutBtn" class="btn btn-outline hidden" type="button">Logout</button>
+      </nav>
+    </header>
+
+    <section id="loginBox" class="panel">
+      <h2 style="margin-top:0;color:var(--gold)">Admin login</h2>
+      <div id="loginFlash" class="flash hidden"></div>
+      <label>Password</label>
+      <input id="password" type="password" />
+      <p><button class="btn btn-gold" id="loginBtn" type="button">Login</button></p>
+    </section>
+
+    <section id="dash" class="hidden">
+      <div class="tabs">
+        <button class="btn btn-outline active" data-status="pending" type="button">Pending</button>
+        <button class="btn btn-outline" data-status="confirmed" type="button">Confirmed</button>
+        <button class="btn btn-outline" data-status="rejected" type="button">Rejected</button>
+      </div>
+      <div id="list" class="grid"></div>
+    </section>
+  </div>
+  <script src="/admin.js"></script>
+</body>
+</html>

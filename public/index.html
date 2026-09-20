@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SPL Sakarauli Premier League 2026</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="/">
+        <div class="badge">SPL<br />2026</div>
+        <div>
+          <strong>Sakarauli Premier League</strong>
+          <div class="muted">जिले का SPL Tournament</div>
+        </div>
+      </a>
+      <nav class="nav">
+        <a class="btn btn-outline" href="/status">Registration Status</a>
+        <a class="btn btn-gold" href="/register">Player Register</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="kicker">Tennis Ball Tournament 2026</div>
+      <h1>SPL</h1>
+      <p style="font-size:28px;margin:0;font-weight:800;color:#ffe08a">SAKARAULI PREMIER LEAGUE</p>
+      <p class="sub">Biggest cricket event of the district · खेलेंगे दिल से, जीतेंगे पूरे जोश से!</p>
+    </section>
+
+    <div class="grid cards">
+      <div class="card">
+        <h3>Registration Fee</h3>
+        <p>Sirf <strong>₹300</strong>. GPay / PhonePe se pay karke UTR aur screenshot form mein upload karein.</p>
+      </div>
+      <div class="card">
+        <h3>Admin confirm</h3>
+        <p>Form submit ke baad status <strong>Pending</strong> rahega. Admin UTR manually verify karega, tabhi registration confirm hogi.</p>
+      </div>
+      <div class="card">
+        <h3>WhatsApp</h3>
+        <p>Help: <a id="waLink" href="https://wa.me/919122011699">91220 11699</a></p>
+      </div>
+    </div>
+
+    <div class="warn">
+      नगर निगम या नगर पंचायत के खिलाड़ियों का रजिस्ट्रेशन फॉर्म न भरें।
+      Registration ke baad payment screenshot form par upload karna zaroori hai.
+    </div>
+
+    <div class="pay-box">
+      <div>
+        <div>PAY ONLY PAYMENT</div>
+        <div>Payment number</div>
+        <strong id="payNum">8709506180</strong>
+        <div>GPay · PhonePe · Scan &amp; Pay</div>
+        <div class="muted" id="upiId" style="color:#5b4a22;margin-top:6px">8709506180@ybl</div>
+      </div>
+      <div class="qr-wrap">
+        <img id="payQr" src="/api/payment-qr" alt="SPL payment QR — Scan &amp; Pay ₹300" />
+        <small>SCAN &amp; PAY ₹300</small>
+      </div>
+      <a class="btn btn-gold" href="/register">Player Registration Form →</a>
+    </div>
+
+    <footer>© SPL 2026 · खेल का जुनून, गाँव का सम्मान</footer>
+  </div>
+  <script>
+    fetch("/api/config").then((r) => r.json()).then((c) => {
+      document.getElementById("payNum").textContent = c.paymentNumber;
+      document.getElementById("upiId").textContent = c.paymentUpi;
+      document.getElementById("payQr").src = c.qrUrl + "?t=" + Date.now();
+      document.getElementById("waLink").href = "https://wa.me/91" + c.whatsapp;
+      document.getElementById("waLink").textContent = c.whatsapp.replace(/(\d{5})(\d{5})/, "$1 $2");
+    }).catch(() => {});
+  </script>
+</body>
+</html>
